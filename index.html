@@ -727,6 +727,329 @@
             }
         }
     </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a192f;
+            color: #ccd6f6;
+            padding: 40px 20px;
+        }
+
+        /* Certifications Section */
+        .certifications-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ccd6f6;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: 1rem;
+        }
+
+        /* Carousel Container */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .carousel-wrapper {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .certificate-card {
+            min-width: 100%;
+            padding: 20px;
+            background: #112240;
+            border-radius: 12px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            border-color: rgba(100, 255, 218, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+        }
+
+        .certificate-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .certificate-image-wrapper {
+            width: 250px;
+            height: 180px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #1a365d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover .certificate-image-wrapper {
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .certificate-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .certificate-placeholder {
+            font-size: 4rem;
+            color: #00d4ff;
+        }
+
+        .certificate-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .certificate-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ccd6f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-issuer {
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .certificate-date {
+            color: #8892b0;
+            font-size: 0.95rem;
+        }
+
+        .certificate-description {
+            color: #8892b0;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        .certificate-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-badge {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .certificate-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64ffda;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+
+        .certificate-link:hover {
+            color: #00d4ff;
+        }
+
+        /* Navigation Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #0077b5, #00d4ff);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-btn.prev {
+            left: 0;
+        }
+
+        .carousel-btn.next {
+            right: 0;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-btn:disabled:hover {
+            transform: translateY(-50%) scale(1);
+        }
+
+        /* Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .indicator.active {
+            background: #00d4ff;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: rgba(0, 212, 255, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .carousel-container {
+                padding: 0 60px;
+            }
+
+            .certificate-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .certificate-image-wrapper {
+                margin: 0 auto;
+            }
+
+            .certificate-skills {
+                justify-content: center;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .certificate-name {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Instructions Box */
+        .instructions {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 1000px;
+        }
+
+        .instructions h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .instructions p {
+            color: #8892b0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .instructions code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #64ffda;
+            font-family: 'Courier New', monospace;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+            color: #8892b0;
+        }
+
+        .instructions li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -938,11 +1261,73 @@
         </div>
     </div>
 </section>
+<!-- Certifications Section -->
+    <section id="certifications" class="certifications-section">
+        <div class="section-header">
+            <span class="section-number">05.</span>
+            <h2 class="section-title">Certifications</h2>
+            <div class="section-line"></div>
+        </div>
 
+        <div class="carousel-container">
+            <!-- Previous Button -->
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Previous Certificate">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <!-- Carousel Wrapper -->
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    
+                    <!-- Certificate Card 1 - Example -->
+                    <div class="certificate-card">
+                        <div class="certificate-content">
+                            <div class="certificate-image-wrapper">
+                                <!-- Replace with your certificate image -->
+                                <img src="Job simulation certify 1.png" alt="Job Simulation Certificate" 
+                                     onerror="this.parentElement.innerHTML='<div class=\'certificate-placeholder\'>🏆</div>'">
+                            </div>
+                            <div class="certificate-details">
+                                <h3 class="certificate-name">Data Visualisation: Empowering Business with Effective Insights</h3>
+                                <div class="certificate-issuer">Forage / TATA Consultancy Services</div>
+                                <div class="certificate-date">Issued: January 2026</div>
+                                <p class="certificate-description">
+                                    ✅ Completed a simulation involving creating data Visualisation for Tata Consultancy Services. 
+
+✅ Prepared questions for a meeting with Client senior leadership.
+
+✅ Created visuals for data analysis to help executives with effective decision making.
+                                </p>
+                                <div class="certificate-skills">
+                                    <span class="skill-badge">Business Analysis</span>
+                                    <span class="skill-badge">Data Visualisation</span>
+                                    <span class="skill-badge">Problem Solving</span>
+                                    <span class="skill-badge">Stakeholder Engagement</span>
+                                </div>
+                                <a href="#" class="certificate-link" target="_blank" rel="noopener noreferrer">
+                                    View Certificate <i class="https://www.linkedin.com/posts/nirmalsanil_tata-data-visualisation-activity-7417291575669727232-EgX3?utm_source=share&utm_medium=member_desktop&rcm=ACoAADCf-ZgBmGlIfDZ1Vuop2uYuPl_dyaXe9FI"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Next Certificate">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators" id="indicators"></div>
+    </section>
+    
 <!-- Contact Section -->
 <section id="contact">
     <div class="section-header">
-        <span class="section-number">05.</span>
+        <span class="section-number">06.</span>
         <h2 class="section-title">Get In Touch</h2>
         <div class="section-line"></div>
     </div>
@@ -1057,8 +1442,126 @@
     console.log('%cStop!', 'color: red; font-size: 50px; font-weight: bold;');
     console.log('%cThis is a browser feature intended for developers.', 'font-size: 16px;');
 </script>
+    
+    <script>
+        let currentIndex = 0;
+        const track = document.getElementById('carouselTrack');
+        const cards = document.querySelectorAll('.certificate-card');
+        const totalCards = cards.length;
+        const indicatorsContainer = document.getElementById('indicators');
+
+        // Create indicators
+        function createIndicators() {
+            indicatorsContainer.innerHTML = '';
+            for (let i = 0; i < totalCards; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (i === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(i));
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        // Update carousel position
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Update indicators
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+
+            // Update button states
+            updateButtons();
+        }
+
+        // Move carousel
+        function moveCarousel(direction) {
+            currentIndex += direction;
+            
+            // Wrap around (circular behavior)
+            if (currentIndex < 0) {
+                currentIndex = totalCards - 1;
+            } else if (currentIndex >= totalCards) {
+                currentIndex = 0;
+            }
+            
+            updateCarousel();
+        }
+
+        // Go to specific slide
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Update button states (optional - remove if you want infinite loop)
+        function updateButtons() {
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            
+            // Remove these lines if you want infinite circular scrolling
+            // prevBtn.disabled = currentIndex === 0;
+            // nextBtn.disabled = currentIndex === totalCards - 1;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                moveCarousel(-1);
+            } else if (e.key === 'ArrowRight') {
+                moveCarousel(1);
+            }
+        });
+
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+
+        carouselWrapper.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carouselWrapper.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                moveCarousel(1); // Swipe left
+            }
+            if (touchEndX > touchStartX + 50) {
+                moveCarousel(-1); // Swipe right
+            }
+        }
+
+        // Auto-play (optional - uncomment to enable)
+        // let autoplayInterval = setInterval(() => {
+        //     moveCarousel(1);
+        // }, 5000);
+
+        // Pause autoplay on hover (if autoplay is enabled)
+        // carouselWrapper.addEventListener('mouseenter', () => {
+        //     clearInterval(autoplayInterval);
+        // });
+
+        // carouselWrapper.addEventListener('mouseleave', () => {
+        //     autoplayInterval = setInterval(() => {
+        //         moveCarousel(1);
+        //     }, 5000);
+        // });
+
+        // Initialize
+        createIndicators();
+        updateCarousel();
+    </script>
 </body>
 </html>
+
 
 
 
