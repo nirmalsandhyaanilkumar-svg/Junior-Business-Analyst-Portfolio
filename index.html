@@ -981,34 +981,44 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .carousel-container {
-                padding: 0 60px;
-            }
+       @media (max-width: 768px) {
+    /* Change grid to single column */
+    .certificate-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
 
-            .certificate-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+    /* Make image full width and centered */
+    .certificate-image-wrapper {
+        margin: 0 auto;
+        max-width: 100%;
+        width: 100%;
+        height: 200px;
+    }
 
-            .certificate-image-wrapper {
-                margin: 0 auto;
-            }
+    /* Ensure card uses full width */
+    .certificate-card {
+        padding: 1.5rem;
+        min-width: 100%;
+    }
 
-            .certificate-skills {
-                justify-content: center;
-            }
+    /* Center skills and link */
+    .certificate-skills {
+        justify-content: center;
+    }
 
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
+    .certificate-link {
+        justify-content: center;
+    }
 
-            .certificate-name {
-                font-size: 1.2rem;
-            }
-        }
+    /* Smaller navigation buttons */
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
 
         /* Instructions Box */
         .instructions {
@@ -1560,6 +1570,7 @@
     </script>
 </body>
 </html>
+
 
 
 
