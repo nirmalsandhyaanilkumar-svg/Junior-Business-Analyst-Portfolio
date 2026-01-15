@@ -982,12 +982,17 @@
 
         /* Responsive */
        @media (max-width: 768px) {
-    /* Change grid to single column */
-    .certificate-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        text-align: center;
-    }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 25, 47, 0.98);
+                padding: 2rem;
+                gap: 1.5rem;
+            }
 
     /* Make image full width and centered */
     .certificate-image-wrapper {
@@ -1570,6 +1575,7 @@
     </script>
 </body>
 </html>
+
 
 
 
